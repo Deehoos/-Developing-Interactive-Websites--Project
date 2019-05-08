@@ -1,0 +1,39 @@
+	
+	
+	h2 {
+		position: absolute;
+		text-align: center;
+		top: 200px;
+		left: 0;
+		width: 100%;
+	}
+	
+	.middleContainer {
+		layout: relative;
+		
+	}
+	
+	.briefGalleryContainer {
+		layout: relative;
+		
+	}
+	
+	
+	
+	.bottomContainer {
+		layout: relative;
+		bottom: 0;
+		position: absolute;
+		width: 100%;
+		/*background-color: red;*/
+		/*background-color: rgba(255, 99, 71, 0.5);*/
+		line-height: 500px;	
+		
+	}
+	
+	.titleText {
+		font-size: 50px;
+		font-color: white;
+		font-family: Gill Sans MT;
+		position: absolute;
+	}

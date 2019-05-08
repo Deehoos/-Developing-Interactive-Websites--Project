@@ -1,0 +1,221 @@
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="register">
+	<meta name="description" content="register page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<script>
+	function startup() {
+		showUser();
+		setupUserbar();
+	}
+	
+	function registeringAction(formID) {	
+		
+		try{
+			var formIsValid = document.getElementById(formID).checkValidity();
+				var realButton = document.getElementById('real_submitButton');
+			
+				if(formIsValid == true)
+				{
+					console.log("performing registering action");
+					
+					try{
+						$("#sudoBackground").fadeIn(500);
+						//$("#transparentBackground").fadeIn(500);
+
+						setTimeout(function(){
+							$("#sudoLoading").fadeIn(500);
+							console.log("Fading in sudoLoading module");
+						}, 1700);	
+						
+						//wait 2 seconds before adding to cart		
+						setTimeout(function(){
+							console.log("Inside final function!");
+							register();
+							console.log("Finished register function.");
+							realButton.click();
+							document.getElementById('sudoBackground').style.display="none";
+							document.getElementById('sudoLoading').style.display="none";
+							window.location = 'home.html';
+						}, 3000);
+					} catch (error)
+					{
+						alert("something has failed, call the admin!");
+					}
+					
+				} else {
+					realButton.click();
+				}
+			} catch (e)
+			{
+				alert("something failed");
+			}
+		
+	}	
+</script>
+
+
+<body class="backgroundImage" onload="startup()">
+
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+
+<!--Banner-->
+<div>
+	<div class="bannerBackground"><img src="img/banner.png"></div>
+</div>
+
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>		
+     	</div>
+	</div>	
+</div>
+
+<div class="registerFieldBackground">
+	<div class="formPositioning">
+		<form name="member" method="post" id="masterForm" >
+		<table class="loginPage">
+		<col width="30%">
+		<col width="70%">
+		
+		<tr class="loginPage">	
+		<td>Enter First Name: &nbsp; &nbsp;</td>
+		<td><input id="firstName" type="text" name="name" size="30" onchange="nameCheck('firstName');" required ></td>
+		</tr>
+		
+		
+		<tr class="loginPage">
+		<td>Enter Last Name: &nbsp; &nbsp;</td>	
+		<td><input id="lastName" type="text" name="name" size="30" onchange="nameCheck('lastName');" required></td>
+		</tr>
+		
+		<tr>
+		<td>Select Gender: &nbsp; &nbsp;</td>
+		<td><select id="gender">
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			</select></td>
+		</tr>
+		
+		<tr>
+		<td>Enter Username: &nbsp; &nbsp;</td>
+		<td><input id="username" type="text" name="name" size="30" onchange="alphanumeric('username');" required>
+		<p id="registerUsername_taken" color="red">
+		<p id="registerUsername_available" color="green"></p>
+		</p></td>
+		</tr>
+		
+		<tr>
+		<td>Enter Email: &nbsp; &nbsp;</td>
+		<td><input id="email" type="text" name="email" size="30" onchange="emailValidation('email');" required >
+		<p id="registerEmail_taken" color="red"></p>
+		<p id="registerEmail_available" color="green"></p>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>Enter Password: &nbsp; &nbsp;</td>
+		<td><input id="password" type="text" name="password" size="30" required ></td>
+		</tr>
+		
+		<tr>
+		<td>Enter Number: &nbsp; &nbsp;</td>
+		<td><input id="number" type="text" name="number" size="30" onchange="numeric('number');" required></td>
+		</tr>
+		
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		<tr></tr>
+		
+		
+		<tr>
+		<td colspan="2" align="center"><input id="submitButton" type="button" onclick="registeringAction('masterForm')" value="Register"><input style="display:none;" id="real_submitButton" type="submit" value="Register"> <input type="reset" value="Clear All"></td>
+		</tr>
+		
+		</table>
+		</form>
+	</div>
+</div>
+	
+<!--for sudo modal hehe-->
+<div class="transparentBackground" id="sudoBackground">
+	<div class="modal-contentLoading">
+	<h2  style="color:yellow;">Registering...<h2>
+	<div class="loader2"></div>
+	</div>
+</div> 
+
+<div class="animatedLoading" id="sudoLoading">	
+	<div class="modal-contentLoading">
+	<h2 style="color:yellow;">You have been successfully registered!<h2>
+	</div>
+</div>	
+
+<div class="footer">
+	Araükaden TM
+</div>
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+</body>
+
+</html>

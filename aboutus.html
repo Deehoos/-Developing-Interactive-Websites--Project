@@ -1,0 +1,160 @@
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="aboutus">
+	<meta name="description" content="aboutus page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script> 
+</head>
+
+<script type = "text/javascript">
+          function displayNextImage() {
+			  console.log("Loaded displayNextImage() method");
+              x = (x === images.length - 1) ? 0 : x + 1;
+              document.getElementById("centralBanner").src = images[x];
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("centralBanner").src = images[x];
+          }
+
+		  
+		  function adaptiveTimer(interval, worker) {
+			  function tick() {
+				worker();
+				setTimeout(tick, (previous += interval) - Date.now());
+			  }
+
+			  var previous = Date.now();
+			  tick();
+			}
+
+          var images = [], x = -1;
+          images[0] = "img/banner3.png";
+          images[1] = "img/banner2.png";
+          
+</script>
+
+<script>
+	function showCart() {
+		
+	}
+</script>
+
+<script>	
+	function startup() {
+		showUser();
+		setupUserbar();
+	}
+</script>
+
+<body class="backgroundImage" onload="startup()">
+
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+
+<!--Banner-->
+<div>
+	<div class="bannerBackground"><img src="img/banner.png"></div>
+</div>
+
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>			
+     	</div>
+	</div>	
+</div>
+
+<!--you should programmatically add in entries to the below container to reflect what is in the customer's cart-->
+<div class="aboutusBackside" style="height:1130;">
+	
+	
+	
+	
+	
+	
+	<img width="1200px" height="675px" src="img/aboutus.png">
+	
+	<form style="margins:0; padding:0; font-size:20px; text-align:center;">
+		<br>
+		Araükaden is a Singaporean-based company that sells fruits online. It was created on the 12th of February, 2012. 
+		<br>For its first 3 years it has been selling fruits in simple stores at the wet markets. It had made a fair 
+		<br>amount of money but the company by then had decided to expand its operations. 
+		
+		<br><br><br>It eventually opened up major operations, 
+		<br>buying up larger payloads from farmers and reselling them for more at their countless stores. While they kept their 
+		<br>wet market stores as they were profitable, they had also set up stores in malls boasting stocks that were more affordable 
+		<br>than the ones found in regular retail stores. 
+		
+		<br><br><br>Major competitors started delivering groceries to customers through their
+		<br>online website so Araükaden decided to follow suit and set up their own website in the year 2015. Their website was 
+		<br>overly crowded with items, somewhat unintuitive and not exactly the most pleasing layout on which to display their products. 
+		
+		<br><br><br>They had decided they had had enough and created a new, easier to use website that was a sight for sore eyes amidst the sea of 
+		<br>poorly designed websites at the time.
+	</form>
+	
+
+</div>
+
+<div class="footer">
+	Araükaden TM
+</div>
+
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+</body>
+
+</html>

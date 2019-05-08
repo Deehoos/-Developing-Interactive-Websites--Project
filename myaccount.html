@@ -1,0 +1,171 @@
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="myaccount">
+	<meta name="description" content="myaccount page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script> 
+</head>
+
+
+<script type="text/javascript">
+	function startup() {
+		showUser();
+		setupUserbar();
+	}
+	
+	function showUserAccountDetails()
+	{
+		var thegivenusername = document.getElementById("thegivenusername");
+		readUserXML(thegivenusername.value);
+		//loadXMLSync();
+	}
+	
+	
+</script>
+
+
+<body class="backgroundImage" onload="startup()">
+
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+
+<!--Banner-->
+<div>
+	<div class="bannerBackground"><img src="img/banner.png"></div>
+</div>
+
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>			
+     	</div>
+	</div>	
+</div>
+
+<!--you should programmatically add in entries to the below container to reflect what is in the customer's cart-->
+<div class="aboutusBackside" style="height:700px;">
+
+	<h1 style="margin:0; padding-top:50px;">Search Accounts using XML</h1>
+	<h3 style="color:red;">warning, this page is only functional when using firefox...</h3>
+	
+	<form>
+		<input id="thegivenusername" type="text" placeholder="enter your account name here" onchange="showUserAccountDetails()"></input>
+	
+		<table style="padding-left:300px; padding-top:50px;">
+			<tr class="loginPage">	
+			<td>Enter First Name: &nbsp; &nbsp;</td>
+			<td><input id="firstName" type="text" name="name" size="30" required></td>
+			</tr>
+			
+			
+			<tr class="loginPage">
+			<td>Enter Last Name: &nbsp; &nbsp;</td>	
+			<td><input id="lastName" type="text" name="name" size="30" required></td>
+			</tr>
+			
+			<tr>
+			<td>Select Gender: &nbsp; &nbsp;</td>
+			<td><select id="gender">
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+				</select></td>
+			</tr>
+			
+			<tr>
+			<td>Enter Username: &nbsp; &nbsp;</td>
+			<td><input id="username" type="text" name="name" size="30" required>
+			<p id="registerUsername_taken" color="red">
+			<p id="registerUsername_available" color="green"></p>
+			</p></td>
+			</tr>
+			
+			<tr>
+			<td>Enter Email: &nbsp; &nbsp;</td>
+			<td><input id="email" type="text" name="email" size="30" required oninvalid="this.setCustomValidity('ERROR, MISSING @ character')" oninput="setCustomValidity('')">
+			<p id="registerEmail_taken" color="red"></p>
+			<p id="registerEmail_available" color="green"></p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td>Enter Password: &nbsp; &nbsp;</td>
+			<td><input id="password" type="text" name="password" size="30" required oninvalid="this.setCustomValidity('Must contain 6 or more characters.')" pattern=".{6,}" oninput="setCustomValidity('')"></td>
+			</tr>
+			
+			<tr>
+			<td>Enter Number: &nbsp; &nbsp;</td>
+			<td><input id="number" type="text" name="number" size="30"required></td>
+			</tr>
+			
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+
+		</table>
+	</form>
+
+</div>
+
+<div class="footer">
+	Araükaden TM
+</div>
+
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,317 @@
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="checkout">
+	<meta name="description" content="checkout page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+<script>
+	function startup() {
+		showUser();
+		showUserCheckout();
+		setupUserbar();
+	}
+	
+	function deliveryFieldsVerified() {
+		var check1 = nameCheck('firstName');
+		var check2 = nameCheck('lastName');
+		var check3 = emailValidation('email');
+		var check4 = numeric('postalCode');
+		var check5 = numeric('number');
+		
+		if(check1==false || check2==false || check3==false || check4==false || check5==false)
+		{
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	function paymentFieldsVerified() {
+		var checkCreditCard = creditCardValidation('creditcardnumber');
+		var checkCCV = ccvCheck('ccv');
+		var checkEXPDate = dateCheck('expirationDate');
+		
+		if(checkCreditCard==false || checkCCV==false || checkEXPDate==false)
+		{
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	function clearCart() {
+		console.log("CLEARING CART ON SUCCESSFUL CHECKOUT!");
+		
+		var emptyArray = [];
+		
+		localStorage.setItem("fruitNames", JSON.stringify(emptyArray));
+		localStorage.setItem("fruitQuantities", JSON.stringify(emptyArray));
+		localStorage.setItem("fruit_totalPrices", JSON.stringify(emptyArray));
+	}
+</script>
+
+<script>
+$(document).ready(function(){
+		var readyForNext = false;
+		var readyForNext2 = false;
+        $("#delivery").fadeIn(1000);
+        document.getElementById("checkoutHeader").textContent = "Delivery Details";
+		
+		//transitioning to payment
+		
+		
+		$("#toPayment").click(function(){	
+			readyForNext = deliveryFieldsVerified();
+			if(readyForNext == true)
+			{
+				$("#delivery").fadeOut(1000);
+				$("#payment").fadeIn(1000);	
+				document.getElementById("checkoutHeader").textContent = "Payment";			
+			} else {
+				alert("Check to make sure all fields are valid first!");
+			}
+			
+		});
+
+		//transitioning to confirmation
+		$("#toConfirmation").click(function(){		
+			readyForNext2 = paymentFieldsVerified();
+			if(readyForNext2 == true)
+			{
+				console.log("it's true");
+				$("#payment").fadeOut(1000);
+				$("#confirmation").fadeIn(1000);
+				document.getElementById("checkoutHeader").textContent = "Confirmation";
+			}			
+		});  
+
+		//transitioning to confirmation
+		$("#confirmOrder").click(function(){		
+			alert("Thank you for doing business with us, your products will arrive shortly! Feel free to contact us if there are any problems!");
+			clearCart();
+			window.location='home.html';
+		}); 
+});
+
+//Transition to payment
+$(document).ready(function(){
+    
+});
+</script>
+
+<body class="backgroundImage" onload="startup()">
+
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+
+<!--Banner-->
+<div>
+	<div class="bannerBackground"><img src="img/banner.png"></div>
+</div>
+
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>		
+     	</div>
+	</div>	
+</div>
+
+<!--you should programmatically add in entries to the below container to reflect what is in the customer's cart-->
+<div class="cartBackside">
+	
+	<div class = "checkoutGreeting">
+		<h2><span>Checking out as: </span><span style="color:green" id="checkingOutName">test</span></h2>
+	</div>
+	
+	
+	<h1 id="checkoutHeader">Delivery Details</h1>
+	
+	<!-------------------->
+	<!--DELIVERY DETAILS-->
+	<!-------------------->
+	<div class="formPositioningCheckout" id="delivery" style="display:none;">		
+	<form id="deliveryForm">
+	<table>
+		<col width="30%">
+		<col width="70%">
+		
+		<tr class="loginPage">	
+		<td>Enter First Name: &nbsp; &nbsp;</td>
+		<td><input id="firstName" type="text" name="firstName" size="30" onchange="nameCheck('firstName');" required></td>
+		</tr>
+		
+		
+		<tr class="loginPage">
+		<td>Enter Last Name: &nbsp; &nbsp;</td>	
+		<td><input id="lastName" type="text" name="lastName" size="30" onchange="nameCheck('lastName');" required></td>
+		</tr>
+		
+		<tr>
+		<td>Enter Email: &nbsp; &nbsp;</td>
+		<td><input id="email" type="text" name="email" size="30" onchange="emailValidation('email');" required>
+		<p id="registerEmail_taken" color="red"></p>
+		<p id="registerEmail_available" color="green"></p>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>Enter Postal Code: &nbsp; &nbsp;</td>
+		<td><input id="postalCode" type="text" name="postalCode" onchange="numeric('postalCode');" size="30" required></td>
+		</tr>
+		
+		<tr>
+		<td>Enter Number: &nbsp; &nbsp;</td>
+		<td><input id="number" type="text" name="password" size="30" onchange="numeric('number');" required></td>
+		</tr>
+		
+		<tr style="height:20px;"></tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<!--after a successful purchase, redirect the user to the home.html page, then display a modal thanking them for their purchase!-->
+				<button type="button" id="toPayment" class="checkoutButton">Next</button>		
+				<input type="reset" value="Clear All">		
+			</td>
+		</tr>
+		
+		</table>	
+		</form>
+		</div>
+	
+	
+	<!-------------------->
+	<!------PAYMENT------->
+	<!-------------------->
+		<div class="formPositioningCheckout" id="payment" style="display:none;">
+	<form id="paymentForm">
+	<table>
+		<col width="30%">
+		<col width="70%">
+		
+		<tr>
+		<td>Enter Credit Card Number: &nbsp; &nbsp;</td>
+		<td><input id="creditcardnumber" type="text" name="password" size="30" onchange="creditCardValidation('creditcardnumber');" required></td>
+		</tr>
+		
+		<tr>
+		<td>Enter Credit SecurityCode: &nbsp; &nbsp;</td>
+		<td><input id="ccv" type="text" name="password" size="30" onchange="ccvCheck('ccv');" required></td>
+		</tr>
+			
+		<tr>
+		<td>Enter Expiration Date: &nbsp; &nbsp;</td>
+		<td><input id="expirationDate" type="text" name="password" size="30" onchange="dateCheck('expirationDate');" required></td>
+		</tr>	
+		
+		<tr style="height:20px;"></tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<!--after a successful purchase, redirect the user to the home.html page, then display a modal thanking them for their purchase!-->
+				<button type="button" id="toConfirmation" class="checkoutButton">Next</button>		
+				<input type="reset" value="Clear All">		
+			</td>
+		</tr>
+		
+		</table>	
+		</form>
+		</div>
+		
+    <!-------------------->
+	<!----CONFIRMATION---->
+	<!-------------------->
+	<div class="formPositioningCheckout" id="confirmation" style="display:none; padding-left:530px;">		
+	<form id="confirmationForm">
+	
+	<table>
+	
+	</table>
+	
+	<table>
+		<col width="30%">
+		<col width="70%"
+		
+		
+		<tr style="height:20px;"></tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<!--after a successful purchase, redirect the user to the home.html page, then display a modal thanking them for their purchase!-->
+				<button type="button" id="confirmOrder" class="checkoutButton">Confirm Order</button>	
+				<button type="submit" id="real_confirmOrderButton" class="checkoutButton" style="display:none;">Confirm Order</button>				
+			</td>
+		</tr>
+		
+		</table>	
+		</form>
+		</div>
+	
+	<br>
+
+</div>
+
+<div class="footer">
+	Araükaden TM
+</div>
+
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+</body>
+
+</html>

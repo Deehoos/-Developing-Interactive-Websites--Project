@@ -1,0 +1,10 @@
+﻿<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<tutorials>
+	<tutorial>
+		<name>XML Tutorial</name>
+		<url>http://www.abc.com</url>
+	</tutorial>
+	<tutorial>
+		<name>HTML Tutorial</name>
+		<url>http://www.efg.com</url></tutorial>
+	</tutorials>

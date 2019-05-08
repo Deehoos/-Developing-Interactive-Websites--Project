@@ -1,0 +1,142 @@
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="administrativePanel">
+	<meta name="description" content="administrativePanel page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script> 
+</head>
+
+<script type = "text/javascript">
+          function displayNextImage() {
+			  console.log("Loaded displayNextImage() method");
+              x = (x === images.length - 1) ? 0 : x + 1;
+              document.getElementById("centralBanner").src = images[x];
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("centralBanner").src = images[x];
+          }
+
+		  
+		  function adaptiveTimer(interval, worker) {
+			  function tick() {
+				worker();
+				setTimeout(tick, (previous += interval) - Date.now());
+			  }
+
+			  var previous = Date.now();
+			  tick();
+			}
+
+          var images = [], x = -1;
+          images[0] = "img/banner3.png";
+          images[1] = "img/banner2.png";
+          
+</script>
+
+<script>
+	function showCart() {
+		
+	}
+</script>
+
+<script>
+	function startup() {
+		showUser();
+		setupUserbar();
+	}
+</script>
+
+<body class="backgroundImage" onload="startup()">
+
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+
+<!--Banner-->
+<div>
+	<div class="bannerBackground"><img src="img/banner.png"></div>
+</div>
+
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>			
+     	</div>
+	</div>	
+</div>
+
+<!--you should programmatically add in entries to the below container to reflect what is in the customer's cart-->
+<div class="aboutusBackside" style="height:500px;">
+
+	
+	<div style="padding-top:10px;"></div>
+	<h1>Administrative Panel</h1>
+	<h2 style="color:red;">Please open firefox to use the two pages linked herein</h2>
+	<div style="padding-top:30px;"></div>
+	<input type="button" value="Search accounts in myaccount.html file" onclick="window.location='myaccount.html';" style="width:400px; height:50px;">
+	<div style="padding-top:30px;"></div>
+	<input type="button" value="Search products in myproduct.html file" onclick="window.location='myproduct.html';" style="width:400px; height:50px;">
+
+</div>
+
+<div class="footer">
+	Araükaden TM
+</div>
+
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+</body>
+
+</html>

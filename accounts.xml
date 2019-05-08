@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<accounts>
+<account>
+	<firstName>admin</firstName>
+	<lastName>test</lastName>
+	<gender>Male</gender>
+	<username>admin</username>
+	<email>dhughes@hughesnet.org</email>
+	<password>admin*pw2</password>
+	<number>0000000</number>
+</account>
+<account>
+	<firstName>hehe</firstName>
+	<lastName>test</lastName>
+	<gender>Male</gender>
+	<username>hehe</username>
+	<email>mr hehe</email>
+	<password>wowzer</password>
+	<number>123456</number>
+</account>
+<account>
+	<firstName>meow</firstName>
+	<lastName>time</lastName>
+	<gender>Female</gender>
+	<username>meowTime</username>
+	<email>meowtime@gmail.com</email>
+	<password>teeeheee</password>
+	<number>1111111</number>
+</account>
+<account>
+	<firstName>zakk</firstName>
+	<lastName>tubin</lastName>
+	<gender>Male</gender>
+	<username>zakktubinnn</username>
+	<email>zakk55@yahoo.com</email>
+	<password>password123</password>
+	<number>2834823894</number>
+</account>
+<account>
+	<firstName>mrlicklick</firstName>
+	<lastName>wooo</lastName>
+	<gender>Male</gender>
+	<username>mrlicklick</username>
+	<email>mrlick@gmail.com</email>
+	<password>endmymisery</password>
+	<number>555555</number>
+</account>
+</accounts>

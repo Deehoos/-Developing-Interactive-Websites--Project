@@ -1,0 +1,518 @@
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="store">
+	<meta name="description" content="store page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</script>
+</head>
+
+<script>
+	$(document).ready(function(){
+	//$("#sudoLoading").fadeIn(1000);
+	//$("#sudoBackground").fadeIn(1000);
+	console.log("Tried to display sudomodal");
+	
+		
+});
+</script>
+
+<script>
+	function showAddingToCart() {
+	
+	}
+	
+	function startup() {
+		showUser();
+		setupUserbar();
+	}
+	
+	function addToCartANDnotifyUser(productNumber) {		
+		console.log("SPECIAL FUNCTION HEHEHEHEHEH");
+		
+		//close the modal so user can see the "adding to cart message"
+		var mainModal = document.getElementById('myModal' + productNumber);
+		mainModal.style.display = "none";
+		
+		$("#sudoBackground").fadeIn(500);
+		//$("#transparentBackground").fadeIn(500);
+
+		
+			var input = document.getElementById("fruit" + productNumber + "_quantity").value;
+			console.log("input is " + input);
+			if(input != 0 && input > 0)
+			{
+				setTimeout(function(){
+					$("#sudoLoading").fadeIn(500);
+				}, 1700);
+				
+				console.log("is not zero");
+			}
+			
+			if (input == 0 || input < 0){
+				setTimeout(function(){
+					$("#sudoFailedLoading").fadeIn(500);
+				}, 1700);
+				
+				console.log("is zero");
+			}
+			
+				
+		
+		//wait 2 seconds before adding to cart		
+		setTimeout(function(){
+			add_toCart(productNumber);
+			document.getElementById('sudoBackground').style.display="none";
+			document.getElementById('sudoLoading').style.display="none";
+			document.getElementById('sudoFailedLoading').style.display="none";
+		}, 3000);	
+	}
+</script>
+
+
+<body class="backgroundImage" onload="startup()">
+
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<div class="welcomeUser">
+	<p id="welcome">
+</div>
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+
+<!--Banner-->
+<div>
+	<div class="bannerBackground"><img src="img/banner.png"></div>
+</div>
+
+<!--Navigation Bar-->
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>			
+     	</div>
+	</div>	
+</div>
+
+
+
+<div class=productShowcaseBackground>
+
+<div width="1200px" height="675px">
+<video width="1200px" height="675px" autoplay loop style="padding:0;">
+  <source src="fruitPromo.mp4" type="video/mp4">
+ </video>
+</div>
+<!--add the video here-->
+
+
+	<!--product showcasing, 1 row at a time, 5 items in each row!-->
+	<div class="productRowBack">
+		<div class="productRow">
+			<!--<img class="product" src="img/products/apple.png">-->
+			<input type="image" src="img/products/apple.png" onclick="modal(1);" class="product" id="product1"/>						
+				<img class="productSpacer">
+			<input type="image" src="img/products/pear.png" onclick="modal(2);" class="product" id="product2"/>	
+				<img class="productSpacer">
+			<input type="image" src="img/products/banana.png" onclick="modal(3);" class="product" id="product3"/>
+				<img class="productSpacer">
+			<input type="image" src="img/products/grapes.png" onclick="modal(4);" class="product" id="product4"/>
+				<img class="productSpacer">
+			<input type="image" src="img/products/orange.png" onclick="modal(5);" class="product" id="product5"/>
+		</div>
+	</div>
+	
+	<div class="productRowBack">
+		<div class="productRow">			
+			<input type="image" src="img/products/avocado.png" class="product" onclick="modal(6);" id="product6"/>		
+				<img class="productSpacer">
+			<input type="image" src="img/products/lemons.png" class="product" onclick="modal(7);" id="product7"/>	
+				<img class="productSpacer">
+			<input type="image" src="img/products/watermelon.png" onclick="modal(8);" class="product" id="product8"/>	
+				<img class="productSpacer">
+			<input type="image" src="img/products/Golden Pears.png" onclick="modal(9);" class="product" id="product9"/>	
+				<img class="productSpacer">
+			<input type="image" src="img/products/apricot.png" onclick="modal(10);" class="product" id="product10"/>	
+		</div>
+	</div>
+
+</div>
+
+
+<!-- Product1 Modal -->
+<div id="myModal1" class="modal">
+  <!-- Product1 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close1">&times;</span>
+	<p class="modalHeader">Purchase Apple</p>	
+	<form id="appleForm" name="appleForm">
+	  <span class="priceLabel">Price: </span><span class="price">1.15</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit1_quantity" />  
+	  <br><br>
+	  <input type="button" value="Add to Cart" id="addToCart" onclick="addToCartANDnotifyUser(1);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product2 Modal -->
+<div id="myModal2" class="modal">
+  <!-- Product2 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close2">&times;</span>
+	<p class="modalHeader">Purchase Pear</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">2.21</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit2_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" id="addToCart" onclick="addToCartANDnotifyUser(2);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product3 Modal -->
+<div id="myModal3" class="modal">
+  <!-- Product3 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close3">&times;</span>
+	<p class="modalHeader">Purchase Banana</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">0.75</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit3_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(3);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product4 Modal -->
+<div id="myModal4" class="modal">
+  <!-- Product4 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close4">&times;</span>
+	<p class="modalHeader">Purchase Grapes</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">3.35</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit4_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(4);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product5 Modal -->
+<div id="myModal5" class="modal">
+  <!-- Product5 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close5">&times;</span>
+	<p class="modalHeader">Purchase Orange</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">1.85</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit5_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(5);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product6 Modal -->
+<div id="myModal6" class="modal">
+  <!-- Product6 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close6">&times;</span>
+	<p class="modalHeader">Purchase Avocado</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">1.75</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit6_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(6);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product7 Modal -->
+<div id="myModal7" class="modal">
+  <!-- Product7 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close7">&times;</span>
+	<p class="modalHeader">Purchase Lemon</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">1.5</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit7_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(7);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product8 Modal -->
+<div id="myModal8" class="modal">
+  <!-- Product8 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close8">&times;</span>
+	<p class="modalHeader">Purchase Watermelon</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">12</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit8_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(8);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product9 Modal -->
+<div id="myModal9" class="modal">
+  <!-- Product9 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close9">&times;</span>
+	<p class="modalHeader">Purchase Golden Pears</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">2</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit9_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(9);">
+	</form> 	
+  </div>
+</div>
+
+<!-- Product10 Modal -->
+<div id="myModal10" class="modal">
+  <!-- Product10 Modal content -->
+  <div class="modal-content">
+	<span class="close" id="close10">&times;</span>
+	<p class="modalHeader">Purchase Apricot</p>	
+	<form>
+	  <span class="priceLabel">Price: </span><span class="price">5</span>
+	  <br>
+	  <span class="quantity">Quantity: </span><input class="quantity" type="number" value="0" id="fruit10_quantity"/>  
+	  <br><br>
+	  <input type="button" value="Add to Cart" onclick="addToCartANDnotifyUser(10);">
+	</form> 	
+  </div>
+</div>
+
+
+
+<div class="footer">
+	Araükaden TM
+</div>
+</body>
+
+<!--for sudo modal hehe-->
+<div class="transparentBackground" id="sudoBackground">
+	<div class="modal-contentLoading">
+	<h2  style="color:yellow;">Adding to cart...<h2>
+	<div class="loader2"></div>
+	</div>
+</div> 
+
+<div class="animatedLoading" id="sudoLoading">	
+	<div class="modal-contentLoading">
+	<h2 style="color:yellow;">Item successfully added!<h2>
+	</div>
+</div>
+
+<div class="animatedLoading" id="sudoFailedLoading">	
+	<div class="modal-contentLoading">
+	<h2 style="color:red;">Failed to add item: quantity supplied was 0, less than zero or no value was given<h2>
+	</div>
+</div>
+
+<script>
+	function calculate(x) {
+		
+		var fruits = [50];
+		fruits[0] = "Apple";
+		fruits[1] = "Pear";
+		fruits[2] = "Banana"
+		fruits[3] = "Grapes";
+		fruits[4] = "Orange";
+		fruits[5] = "Avocado";
+		fruits[6] = "Lemons";
+		fruits[7] = "Watermelon";
+		fruits[8] = "Golden Pears";
+		fruits[9] = "Apricot";
+		
+		var prices = [50];
+		prices[0] = 1.15;
+		prices[1] = 2.21;
+		prices[2] = 0.75;
+		prices[3] = 3.35;
+		prices[4] = 1.85;
+		prices[5] = 1.75;
+		prices[6] = 1.5;
+		prices[7] = 12;
+		prices[8] = 2;
+		prices[9] = 5;
+		
+		<!--document.getElementById("bread1_quantity").value=x;-->
+		var productName = fruits[x - 1];
+		var productPrice = prices[x - 1];
+		var productQuantityTextboxName = "fruit" + x + "_quantity";
+		var productQuantity = document.getElementById(productQuantityTextboxName).value;	
+		
+		
+		var totalPrice = productPrice*productQuantity; 
+		
+		var productTotalPriceTextboxName = "fruit" + x + "_totalprice";
+		document.getElementById(productTotalPriceTextboxName).value=totalPrice;		
+	}
+	
+
+	
+	function add_toCart(x) {
+	
+	
+	
+	localStorage.type = "fruit";
+		
+		var fruits = [50];
+		fruits[0] = "Apple";
+		fruits[1] = "Pear";
+		fruits[2] = "Banana"
+		fruits[3] = "Grapes";
+		fruits[4] = "Orange";
+		fruits[5] = "Avocado";
+		fruits[6] = "Lemons";
+		fruits[7] = "Watermelon";
+		fruits[8] = "Golden Pears";
+		fruits[9] = "Apricot";
+		
+		var prices = [50];
+		prices[0] = 1.15;
+		prices[1] = 2.21;
+		prices[2] = 0.75;
+		prices[3] = 3.35;
+		prices[4] = 1.85;
+		prices[5] = 1.75;
+		prices[6] = 1.5;
+		prices[7] = 12;
+		prices[8] = 2;
+		prices[9] = 5;
+		
+		
+		<!-- Begin process of registering order to cart (array!) -->
+		//var name_get = fruits[x + 1];
+		//var price_name = "fruit" + x + "_price";
+		//var quantity_name = "fruit" + x + "_quantity";
+		//var totalprice_name = "fruit" + x + "_totalprice";
+		//var bread_number = x;
+		
+		
+		//var nameActual = document.getElementById(name_get).innerHTML; 
+		//var price = document.getElementById(price_name).innerHTML;
+		//var quantity = document.getElementById(quantity_name).value; 
+		
+		var product_name = fruits[x - 1];	
+		console.log("Product name: " + product_name);
+		var product_price = prices[x - 1];	
+		console.log("Product price: " + product_price);
+		var GETproduct_quantity = "fruit" + x + "_quantity";		
+		var product_quantity = document.getElementById(GETproduct_quantity).value;	
+		
+		if(product_quantity == 0 || product_quantity < 0)
+		{
+			return;
+		}
+		
+		console.log("Product quantity: " + product_quantity);
+		var entryCost = product_price*product_quantity; 	
+		console.log("Entry cost: " + entryCost);
+		
+		var fruitNames = [];
+		var fruitQuantities = [];
+		var fruit_totalPrices = [];
+		
+		fruitNames[x]= product_name;
+		fruitQuantities[x]= product_quantity;
+		fruit_totalPrices[x]= entryCost;
+		
+		
+		
+		
+		
+		var names_get = JSON.parse(localStorage.getItem("fruitNames"));
+		var quantities_get = JSON.parse(localStorage.getItem("fruitQuantities"));
+		var totalPrices_get = JSON.parse(localStorage.getItem("fruit_totalPrices"));
+
+		<!--user IDs introduced for cart profiles-->
+		
+		<!--issue discovered, if the localStorage units were not declared earlier,functionality fails-->
+		<!--issue resolved by declaring the array when it doesn't yet exist.-->
+		if(names_get == null)
+		{
+			var names_get = [];
+			var quantities_get = [];
+			var totalPrices_get = []; 
+		}
+		
+		names_get[x]=fruitNames[x];
+		quantities_get[x]=fruitQuantities[x];
+		totalPrices_get[x]=fruit_totalPrices[x];
+
+		<!-- (x-1) is there so that the 1st unit of the array [0] is for bread1 -->
+		
+	
+	    localStorage.setItem("fruitNames", JSON.stringify(names_get));
+		localStorage.setItem("fruitQuantities", JSON.stringify(quantities_get));
+		localStorage.setItem("fruit_totalPrices", JSON.stringify(totalPrices_get));
+		location.reload();
+		
+		
+		
+	}
+	
+	
+	function seeCart() {
+		var x = document.bread1_quantity_get;
+	}
+	
+	function submenu() {
+		
+	}	
+</script>
+

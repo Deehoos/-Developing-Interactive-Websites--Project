@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Store Page</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="home">
+	<meta name="description" content="home page">
+	<meta name="author" content="Dylan Hughes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="superStyles.css">
+	<script type="text/javascript" src="websiteScripts.js"></script> 
+	
+	
+
+</head>
+
+<script type = "text/javascript">
+          
+	function displayNextImage_mainBanner() {
+			  console.log("Loaded displayNextImage() method");
+              x = (x === images_mainBanner.length - 1) ? 0 : x + 1;
+              document.getElementById("centralBanner").src = images_mainBanner[x];
+          }
+
+	function displayPreviousImage_mainBanner() {
+              x = (x <= 0) ? images_mainBanner.length - 1 : x - 1;
+              document.getElementById("centralBanner").src = images_mainBanner[x];
+          }
+		  
+	function displayNextImage_logo() {
+			  console.log("Loaded displayNextImage() method");
+              x = (x === images_logo.length - 1) ? 0 : x + 1;
+              document.getElementById("logo").src = images_logo[x];
+          }	     
+		  
+	function displayPreviousImage_logo() {
+              x = (x <= 0) ? images_logo.length - 1 : x - 1;
+              document.getElementById("logo").src = images_logo[x];
+          }
+		  
+	function adaptiveTimer(interval, worker) {
+			  function tick() {
+				worker();
+				setTimeout(tick, (previous += interval) - Date.now());
+			  }
+
+			  var previous = Date.now();
+			  tick();
+			}
+
+          var images_mainBanner = [], x = -1;
+          images_mainBanner[0] = "img/banner3.png";
+          images_mainBanner[1] = "img/banner2.png";
+		  
+		  var images_logo = [], x = -1;
+          images_logo[0] = "img/logo1.png";
+          images_logo[1] = "img/logo2.png";
+		  images_logo[2] = "img/logo3.png";
+		  images_logo[3] = "img/logo4.png";
+		  images_logo[4] = "img/logo5.png";
+		  images_logo[5] = "img/logo6.png";
+	  
+		
+		           
+</script>
+
+
+<script>
+	function pictureTransitions() {
+		adaptiveTimer(3000,displayNextImage_mainBanner);
+		//adaptiveTimer(5,displayNextImage_logo);
+	}
+</script>
+
+<script>
+	function homeFunctions() {
+		showUser();
+		pictureTransitions();
+		setupUserbar();
+	}
+</script>
+
+<body onload="homeFunctions()" class="backgroundImage">
+<div class="backgroundImage">
+
+<!--userbar-->
+<ul style="list-style-type:none;" class="navigationTop" id="navigationTop">
+</ul>
+
+
+<div class="searchPortion">
+	<!--Search bar and button-->
+	<form style="padding-left:390px; position:absolute; padding-top:15px;" > 
+		<input type="text" height="150px" placeholder="search for product..">
+		<input type="submit" value="Search">
+	</form>
+	
+	<!--User greetings-->
+	<div class="userGreeting">
+		<span class="welcome" id="supertest">Welcome, </span><span class="user" id="displayUsername"></span>
+	</div>
+
+</div>
+
+
+<!--Logo-->
+<div class="topper">
+	<img src="img/logo.png" width="150px" height="70px" style="padding-left: 200px;">	
+</div>
+
+<!--Banner-->
+<div class="mainBanner">
+	<div class="bannerBackground"><img src="img/banner.png"></div>		
+</div>
+
+
+
+<!--Logo-->
+<!--
+<div>
+	<div class="bannerLogo"><img id="logo" class="bannerLogoSpecs" src="img/logo1.png"></div>
+</div>
+-->
+
+<div class="menu">
+	<div class="navigationBarMiddle">	
+		<div class="navigationMenuMiddle">				
+				<span><a class="navigationMenuButtons" href="home.html" style="color:black;" >Home</a></span>
+				<span><a class="navigationMenuButtons" href="store.html" style="color:black;" >Store</a></span>
+				<span><a class="navigationMenuButtons" href="cart.html" style="color:black;" >Cart</a></span>		
+				<span><a class="navigationMenuButtons" href="contactus.html" style="color:black;" >Contact Us</a></span>	
+				<span><a class="navigationMenuButtons" href="aboutus.html" style="color:black;" >About Us</a></span>		
+     	</div>
+	</div>	
+</div>
+
+<!--background color of this is #222;-->
+<!--<nav class="navbar navbar-inverse" style="background-color:#0066A2; margin-left:auto; margin-right:auto; width:1200px; margin-bottom:0;">
+  <div class="container-fluid">
+    <ul style="fore-color:white;" class="nav navbar-nav">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="cart.html">Cart</a></li>
+	  <li><a href="aboutus.html">About Us</a></li>
+	  <li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>-->
+
+<!--<button type="button" onclick="displayPreviousImage()">Previous</button>
+       <button type="button" onclick="displayNextImage()">Next</button>-->
+<div  class="bannerBackgroundMiddle"><img id="centralBanner" src="img/banner3.png"></div>
+
+
+
+<div class="miniBannerRow">
+	<a href="store.html"><img class="miniBanner" src="img/miniBanner1.png"></a>
+	<img class="miniBannerSpacer">
+	<a href="store.html"><img class="miniBanner" src="img/miniBanner2.png"></a>
+</div>
+
+
+
+<div class="footer">
+	Araükaden TM
+</div>
+</body>
+
+</html>

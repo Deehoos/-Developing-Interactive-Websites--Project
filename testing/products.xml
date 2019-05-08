@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+
+
+
+<products>
+	<product>
+		<name>Apple</name>
+		<price>1.15</price>
+	</product>
+	
+	<product>
+		<name>pear</name>
+		<price>2.21</price>
+	</product>
+	
+	<product>
+		<name>banana</name>
+		<price>0.75</price>
+	</product>
+	
+	<product>
+		<name>grapes</name>
+		<price>3.35</price>
+	</product>
+	
+	<product>
+		<name>orange</name>
+		<price>1.85</price>
+	</product>
+	
+	<product>
+		<name>avocado</name>
+		<price>1.75</price>
+	</product>
+	
+	<product>
+		<name>lemons</name>
+		<price>1.5</price>
+	</product>
+	
+	<product>
+		<name>watermelon</name>
+		<price>12</price>
+	</product>
+	
+	<product>
+		<name>golden pear</name>
+		<price>2</price>
+	</product>
+	
+	<product>
+		<name>apricot</name>
+		<price>5</price>
+	</product>
+	
+</products>
